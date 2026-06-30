@@ -24,6 +24,13 @@
       >
     {% endif %}
 
+    {% comment %} Google Fonts {% endcomment %}
+    {%- # theme-check-disable -%}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    {%- # theme-check-enable -%}
+
     {%- render 'meta-tags' -%}
     {%- render 'stylesheets' -%}
     {%- render 'fonts' -%}

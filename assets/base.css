@@ -1,3 +1,17 @@
+:root {
+  /* Palette */
+  --primary-color: #D32F2F;
+  --secondary-color: #212121;
+  --tertiary-color: #757575;
+  --neutral-color: #F5F5F5;
+
+  /* Typography */
+  --main-typography: "Inter", sans-serif;
+}
+
+
+
+
 * {
   box-sizing: border-box;
 }
