@@ -1,11 +1,17 @@
 <style>
     .hero-banner {
+        display: flex;
+        flex-direction: column;
         padding: 16px;
         padding-top: 118px;
         background-image: url("{{ 'stitch-hero-banner.png' | asset_url }}");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
     }
     .hero-banner h1, p {
-    color: var(--neutral-color)
+        color: var(--neutral-color);
+        margin: 7px 0;
     }
     .hero-banner h1 {
         font-size: 36px;
@@ -13,9 +19,115 @@
     .hero-banner p {
         font-size: 16px;
     }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        margin: 20px 0;
+        gap: 20px;
+    }
 </style>
 
-<section class="hero-banner">
-    <h1>Powering Your World</h1>
-    <p>Professional-grade energy solutions for home, job sites, and industrial facilities. Engineered for reliability.</p>
-</section>
+<h1>{{ section.settings.title }}</h1>
+<p>{{ section.settings.paragraph }}</p>
+<div class="hero-buttons">
+    {% render 'stitch-button',
+        button_text: section.settings.btn_text,
+        button_url: section.settings.btn_url,
+        button_bg: section.settings.btn_bgcolor,
+        button_text_color: section.settings.btn_text_color,
+    %}
+    {% render 'stitch-button',
+        button_text: section.settings.btn_text,
+        button_url: section.settings.btn_url,
+        button_bg: section.settings.btn_bgcolor,
+        button_text_color: section.settings.btn_text_color,
+    %}
+</div>
+
+
+{% schema %}
+    {
+        "name": "Stitch Hero Banner",
+        "tag": "section",
+        "class": "hero-banner",
+        "settings": [
+            {
+                "type": "text",
+                "id": "title",
+                "label": "Main Title",
+                "default": "Powering Your World"
+            },
+            {
+                "type": "text",
+                "id": "paragraph",
+                "label": "Paragraph",
+                "default": "Professional-grade energy solutions for home, job sites, and industrial facilities. Engineered for reliability."
+            },
+            {
+                "type": "text",
+                "id": "btn_text",
+                "label": "Text",
+                "default": "Shop All Generator"
+            },
+            {
+                "type": "url",
+                "id": "btn_url",
+                "label": "URL",
+                "default": "/"
+            },
+            {
+                "type": "select",
+                "id": "btn_text_color",
+                "label": "Button Text Color",
+                "default": "--neutral-color",
+                "options": [
+                    {
+                        "value": "--primary-color",
+                        "label": "Primary Color"
+                    },
+                    {
+                        "value": "--secondary-color",
+                        "label": "Secondary Color"
+                    },
+                    {
+                        "value": "--tertiary-color",
+                        "label": "Tertiary Color"
+                    },
+                    {
+                        "value": "--neutral-color",
+                        "label": "Neutral Color"
+                    },
+                ],
+            },
+            {
+                "type": "select",
+                "id": "btn_bgcolor",
+                "label": "Background Button",
+                "default": "--primary-color",
+                "options": [
+                    {
+                        "value": "--primary-color",
+                        "label": "Primary Color"
+                    },
+                    {
+                        "value": "--secondary-color",
+                        "label": "Secondary Color"
+                    },
+                    {
+                        "value": "--tertiary-color",
+                        "label": "Tertiary Color"
+                    },
+                    {
+                        "value": "--neutral-color",
+                        "label": "Neutral Color"
+                    },
+                ],
+            },
+        ],
+        "presets": [
+            {
+                "name": "Stitch Hero Banner"
+            }
+        ]
+    }
+{% endschema %}

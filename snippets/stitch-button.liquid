@@ -1,0 +1,15 @@
+<style>
+    .btn {
+        width: 100%;
+        padding: 20px;
+        border-radius: 2px;
+        background-color: var({{ button_bg }});
+        color: var({{ button_text_color }});
+        box-shadow: 0px 4px 5px 1px var({{ button_bg }});
+        text-align: center;
+    }
+</style>
+
+<a href="{{ button_url }}" class="btn">
+    {{ button_text | upcase }}
+</a>
