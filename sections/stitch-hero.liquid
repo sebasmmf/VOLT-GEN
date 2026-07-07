@@ -37,10 +37,10 @@
         button_text_color: section.settings.btn_text_color,
     %}
     {% render 'stitch-button',
-        button_text: section.settings.btn_text,
-        button_url: section.settings.btn_url,
-        button_bg: section.settings.btn_bgcolor,
-        button_text_color: section.settings.btn_text_color,
+        button_text: section.settings.btn_text_2,
+        button_url: section.settings.btn_url_2,
+        button_bg: section.settings.btn_bgcolor_2,
+        button_text_color: section.settings.btn_text_color_2,
     %}
 </div>
 
@@ -123,6 +123,68 @@
                     },
                 ],
             },
+            
+            {
+                "type": "text",
+                "id": "btn_text_2",
+                "label": "Text",
+                "default": "Request a Quote"
+            },
+            {
+                "type": "url",
+                "id": "btn_url_2",
+                "label": "URL",
+                "default": "/"
+            },
+            {
+                "type": "select",
+                "id": "btn_text_color_2",
+                "label": "Button Text Color",
+                "default": "--neutral-color",
+                "options": [
+                    {
+                        "value": "--primary-color",
+                        "label": "Primary Color"
+                    },
+                    {
+                        "value": "--secondary-color",
+                        "label": "Secondary Color"
+                    },
+                    {
+                        "value": "--tertiary-color",
+                        "label": "Tertiary Color"
+                    },
+                    {
+                        "value": "--neutral-color",
+                        "label": "Neutral Color"
+                    },
+                ],
+            },
+            {
+                "type": "select",
+                "id": "btn_bgcolor_2",
+                "label": "Background Button",
+                "default": "--secondary-color",
+                "options": [
+                    {
+                        "value": "--primary-color",
+                        "label": "Primary Color"
+                    },
+                    {
+                        "value": "--secondary-color",
+                        "label": "Secondary Color"
+                    },
+                    {
+                        "value": "--tertiary-color",
+                        "label": "Tertiary Color"
+                    },
+                    {
+                        "value": "--neutral-color",
+                        "label": "Neutral Color"
+                    },
+                ],
+            },
+
         ],
         "presets": [
             {

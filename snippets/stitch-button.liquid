@@ -5,11 +5,10 @@
         border-radius: 2px;
         background-color: var({{ button_bg }});
         color: var({{ button_text_color }});
-        box-shadow: 0px 4px 5px 1px var({{ button_bg }});
         text-align: center;
     }
 </style>
 
-<a href="{{ button_url }}" class="btn">
+<a href="{{ button_url }}" class="btn" style="background-color: var({{ button_bg }}); color: var({{ button_text_color }});">
     {{ button_text | upcase }}
 </a>
