@@ -10,10 +10,14 @@
   "sections": {
     "hero-banner": {
       "type": "stitch-hero"
+    },
+    "categories-section": {
+      "type": "categories-section"
     }
     
   },
   "order": [
-    "hero-banner"
+    "hero-banner",
+    "categories-section"
   ]
 }

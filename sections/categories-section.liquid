@@ -1,0 +1,104 @@
+<style>
+
+    .categories {
+        height: 400px;
+        padding: 32px 16px;
+    }
+    
+    .card-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 16px 0;
+        gap: 16px;
+    }
+
+</style>
+
+<h2>Browse Categories</h2>
+
+<div class="card-wrapper">
+    {% render 'category-card',
+        title: section.settings.category-title,
+        paragraph: section.settings.category-paragraph,
+        icon: section.settings.category-icon | image_url: width: 16, height: 20
+    %}
+
+    {% render 'category-card',
+        title: section.settings.category-title-2,
+        paragraph: section.settings.category-paragraph-2,
+        icon: section.settings.category-icon-2 | image_url: width: 16, height: 20
+    %}
+
+    {% render 'category-card',
+        title: section.settings.category-title-3,
+        paragraph: section.settings.category-paragraph-3,
+        icon: section.settings.category-icon-3 | image_url: width: 16, height: 20
+    %}
+
+
+</div>
+
+
+{% schema %}
+    {
+        "name": "Categories",
+        "tag": "section",
+        "class": "categories",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "category-icon",
+                "label": "Category Icon",
+            },
+            {
+                "type": "text",
+                "id": "category-title",
+                "label": "Category Title",
+                "default": "Portable Series"
+            },
+            {
+                "type": "text",
+                "id": "category-paragraph",
+                "label": "Category Paragraph",
+                "default": "Rugged power for remote jobsites."
+            },
+
+            {
+                "type": "image_picker",
+                "id": "category-icon-2",
+                "label": "Category Icon",
+            },
+            {
+                "type": "text",
+                "id": "category-title-2",
+                "label": "Category Title",
+                "default": "Standby Home"
+            },
+            {
+                "type": "text",
+                "id": "category-paragraph-2",
+                "label": "Category Paragraph",
+                "default": "Seamless backup for your family."
+            },
+
+            {
+                "type": "image_picker",
+                "id": "category-icon-3",
+                "label": "Category Icon",
+            },
+            {
+                "type": "text",
+                "id": "category-title-3",
+                "label": "Industrial Grade",
+                "default": "High-capacity mission-critical systems."
+            },
+            {
+                "type": "text",
+                "id": "category-paragraph-3",
+                "label": "Category Paragraph",
+                "default": "Rugged power for remote jobsites."
+            },
+        ]
+    }
+
+{% endschema %}

@@ -1,0 +1,71 @@
+<style>
+    .category-card {
+        width: 100%;
+        background-color: var(--neutral-color);
+        border: 1px solid var(--primary-color);
+        border-radius: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .category-details {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .category-card .category-icon {
+        background-color: var(--light-red);
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .category-card .info {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 15px;
+    }
+
+    .category-card .info p {
+        color: var(--tertiary-color);
+    }
+
+    .category-card .info .arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+
+<div class="category-card">
+
+    <div class="category-details">
+        {%  if icon != blank %}
+            <div class="category-icon">
+                {% comment %} icono {% endcomment %}
+                {{ icon | image_url: width: 16 | image_tag: loading: 'lazy', style: 'width: 16px; height: 20px; object-fit: contain;' }}
+            </div>
+        {% endif %}
+
+        <div class="info">
+            <div>
+                <h3>{{ title }}</h3>
+                <p>{{ paragraph }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="arrow">
+        {% comment %} flecha {% endcomment %}
+        <img src="{{ 'arrow-icon.svg' | asset_url }}" height="12" width="7.4">
+    </div>
+</div>
+
