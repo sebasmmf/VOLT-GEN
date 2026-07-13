@@ -6,15 +6,38 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "hero-banner": {
-      "type": "stitch-hero"
+      "type": "stitch-hero",
+      "settings": {
+        "title": "Powering Your World",
+        "paragraph": "Professional-grade energy solutions for home, job sites, and industrial facilities. Engineered for reliability.",
+        "btn_text": "Shop All Generator",
+        "btn_url": "/",
+        "btn_text_color": "--neutral-color",
+        "btn_bgcolor": "--primary-color",
+        "btn_text_2": "Request a Quote",
+        "btn_url_2": "/",
+        "btn_text_color_2": "--neutral-color",
+        "btn_bgcolor_2": "--secondary-color"
+      }
     },
     "categories-section": {
-      "type": "categories-section"
+      "type": "categories-section",
+      "settings": {
+        "category-icon": "shopify://shop_images/Icon_1.svg",
+        "category-title": "Portable Series",
+        "category-paragraph": "Rugged power for remote jobsites.",
+        "category-icon-2": "shopify://shop_images/home-icon.svg",
+        "category-title-2": "Standby Home",
+        "category-paragraph-2": "Seamless backup for your family.",
+        "category-icon-3": "shopify://shop_images/factory-icon.svg",
+        "category-title-3": "High-capacity mission-critical systems.",
+        "category-paragraph-3": "Rugged power for remote jobsites."
+      }
     }
-    
   },
   "order": [
     "hero-banner",
