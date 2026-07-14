@@ -37,10 +37,15 @@
         "category-title-3": "High-capacity mission-critical systems.",
         "category-paragraph-3": "Rugged power for remote jobsites."
       }
+    },
+    "featured-units": {
+      "type": "featured-units",
+      "settings": {}
     }
   },
   "order": [
     "hero-banner",
-    "categories-section"
+    "categories-section",
+    "featured-units"
   ]
 }

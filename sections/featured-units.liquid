@@ -1,0 +1,235 @@
+<style>
+
+    /* Etiqueta que embuelve la sección */
+    .featured-units {
+        padding: 32px 16px;
+    }
+
+    .featured-units-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .btn-link {
+        font-size: 14px;
+        color: var(--primary-color);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .card-wrapper-units {
+        height: 50vh;
+        width: 90vw;
+        border: 1px solid var(--primary-color);
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card-image-container {
+        height: 50%;
+        width: 100%;
+    }
+
+    .card-image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+
+    .card-info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: space-between;
+        padding: 16px;
+    }
+
+    .card-details {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .price-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+
+    .unit-price {
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+    .add-to-cart-btn {
+        background-color: var(--primary-color);
+        border: none;
+        border-radius: 4px;
+        padding: 8px 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+
+    .badge {
+        height: fit-content;
+        width: fit-content;
+        padding: 4px 8px;
+        border-radius: 2px;
+        background-color: var(--primary-color);
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 10px;
+        font-weight: bold;
+    }
+
+</style>
+
+
+{% comment %} Encabezado de la sección de productos destacados {% endcomment %}
+<div class="featured-units-header">
+    <h2>{{ section.settings.title }}</h2>
+    <a href="{{ section.settings.btn_link }}" class="btn-link">
+        {{ section.settings.btn_text }}
+        <img src="{{ 'arrow-right-icon.svg' | asset_url }}" alt="Arrow Right" width="12" height="12"/>
+    </a>
+</div>
+
+{% comment %} Coleccion de productos destacados {% endcomment %}
+<div class="featured-units-collection">
+    {% comment %} Card de producto destacado {% endcomment %}
+    <div class="card-wrapper-units">
+        <div class="badge" style="background-color: var({{ section.settings.badge_background_color }}); color: var({{ section.settings.badge_text_color }});">
+            {{ section.settings.badge_text }}
+
+        </div>
+
+        <div class="card-image-container">
+            <img src="{{ 'featured-product-1.png' | asset_url }}" width="100%" height="50%" alt="Featured product"/>
+        </div>
+
+        <div class="card-info">
+            <div class="card-details">
+                <h3>{{ section.settings.series_title }}</h3>
+                <p>{{ section.settings.card_paragraph }}</p>
+            </div>
+            <div class="price-row">
+                <span class="unit-price">&dollar;{{ section.settings.unit_price }}</span>
+                <button class="add-to-cart-btn">
+                    <img src="{{ 'add-to-cart-icon.svg' | asset_url }}" alt="Cart Icon" width="21" height="21"/>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "Featured Units",
+    "tag": "section",
+    "class": "featured-units",
+    "settings": [
+        {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Featured Units"
+        },
+        {
+            "type": "text",
+            "id": "btn_text",
+            "label": "Button Text",
+            "default": "View All"
+        },
+        {
+            "type": "url",
+            "id": "btn_link",
+            "label": "Button URL",
+            "default": "/collections/all"
+        },
+
+        {
+            "type": "text",
+            "id": "series_title",
+            "label": "Series Title",
+            "default": "VOLT-P8000 Pro Series"
+        },
+        {
+            "type": "textarea",
+            "id": "card_paragraph",
+            "label": "Card Paragraph",
+            "default": "8000W output with CO-Shield technology and easy electric start."
+        },
+        {
+            "type": "text",
+            "id": "unit_price",
+            "label": "Unit Price",
+            "default": "1,299.00"
+        },
+        {
+            "type": "select",
+            "id": "badge_background_color",
+            "label": "Badge Background Color",
+            "default": "--primary-color",
+            "options": [
+                {
+                    "value": "--primary-color",
+                    "label": "Primary Color"
+                },
+                {
+                    "value": "--secondary-color",
+                    "label": "Secondary Color"
+                },
+                {
+                    "value": "--tertiary-color",
+                    "label": "Tertiary Color"
+                },
+                {
+                    "value": "--neutral-color",
+                    "label": "Neutral Color"
+                },
+            ],
+        },
+        {
+            "type": "select",
+            "id": "badge_text_color",
+            "label": "Badge Text Color",
+            "default": "--neutral-color",
+            "options": [
+                {
+                    "value": "--primary-color",
+                    "label": "Primary Color"
+                },
+                {
+                    "value": "--secondary-color",
+                    "label": "Secondary Color"
+                },
+                {
+                    "value": "--tertiary-color",
+                    "label": "Tertiary Color"
+                },
+                {
+                    "value": "--neutral-color",
+                    "label": "Neutral Color"
+                },
+            ],
+        },
+        {
+            "type": "text",
+            "id": "badge_text",
+            "label": "Badge Text",
+            "default": "Best Seller"
+        },
+    ]
+}
+{% endschema %}
