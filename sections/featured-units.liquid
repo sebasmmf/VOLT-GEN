@@ -97,7 +97,10 @@
 
 {% comment %} Encabezado de la sección de productos destacados {% endcomment %}
 <div class="featured-units-header">
-    <h2>{{ section.settings.title }}</h2>
+    {% render 'heading-title', 
+        title: section.settings.title,
+        title_color: section.settings.title_color 
+    %}
     <a href="{{ section.settings.btn_link }}" class="btn-link">
         {{ section.settings.btn_text }}
         <img src="{{ 'arrow-right-icon.svg' | asset_url }}" alt="Arrow Right" width="12" height="12"/>
@@ -109,7 +112,7 @@
     {% comment %} Card de producto destacado {% endcomment %}
     <div class="card-wrapper-units">
         <div class="badge" style="background-color: var({{ section.settings.badge_background_color }}); color: var({{ section.settings.badge_text_color }});">
-            {{ section.settings.badge_text }}
+            <span>{{ section.settings.badge_text }}</span>
 
         </div>
 
@@ -144,6 +147,30 @@
             "id": "title",
             "label": "Title",
             "default": "Featured Units"
+        },
+        {
+            "type": "select",
+            "id": "title_color",
+            "label": "Title Color",
+            "default": "--secondary-color",
+            "options": [
+                {
+                    "value": "--primary-color",
+                    "label": "Primary Color"
+                },
+                {
+                    "value": "--secondary-color",
+                    "label": "Secondary Color"
+                },
+                {
+                    "value": "--tertiary-color",
+                    "label": "Tertiary Color"
+                },
+                {
+                    "value": "--neutral-color",
+                    "label": "Neutral Color"
+                },
+            ],
         },
         {
             "type": "text",

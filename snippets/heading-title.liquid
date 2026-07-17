@@ -1,0 +1,14 @@
+
+
+<h2 class="heading-title">{{ title }}</h2>
+
+<script>
+    const color = "{{ title_color }}";
+    const headingTitle = document.querySelector('.heading-title');
+
+    if (color) {
+        headingTitle.style.color = `var(${color})`;
+    } else {
+        headingTitle.style.color = 'var(--secondary-color)';
+    }
+</script>
