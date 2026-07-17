@@ -20,76 +20,10 @@
         gap: 4px;
     }
 
-    .card-wrapper-units {
-        height: 50vh;
-        width: 90vw;
-        border: 1px solid var(--primary-color);
-        border-radius: 4px;
+    .featured-units-collection {
         display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .card-image-container {
-        height: 50%;
-        width: 100%;
-    }
-
-    .card-image-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; 
-    }
-
-    .card-info {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
-        justify-content: space-between;
-        padding: 16px;
-    }
-
-    .card-details {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .price-row {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
-
-    .unit-price {
-        font-size: 24px;
-        font-weight: bold;
-        color: var(--primary-color);
-    }
-
-    .add-to-cart-btn {
-        background-color: var(--primary-color);
-        border: none;
-        border-radius: 4px;
-        padding: 8px 12px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-    }
-
-    .badge {
-        height: fit-content;
-        width: fit-content;
-        padding: 4px 8px;
-        border-radius: 2px;
-        background-color: var(--primary-color);
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        font-size: 10px;
-        font-weight: bold;
+        gap: 24px;
+        flex-wrap: wrap;
     }
 
 </style>
@@ -110,29 +44,24 @@
 {% comment %} Coleccion de productos destacados {% endcomment %}
 <div class="featured-units-collection">
     {% comment %} Card de producto destacado {% endcomment %}
-    <div class="card-wrapper-units">
-        <div class="badge" style="background-color: var({{ section.settings.badge_background_color }}); color: var({{ section.settings.badge_text_color }});">
-            <span>{{ section.settings.badge_text }}</span>
-
-        </div>
-
-        <div class="card-image-container">
-            <img src="{{ 'featured-product-1.png' | asset_url }}" width="100%" height="50%" alt="Featured product"/>
-        </div>
-
-        <div class="card-info">
-            <div class="card-details">
-                <h3>{{ section.settings.series_title }}</h3>
-                <p>{{ section.settings.card_paragraph }}</p>
-            </div>
-            <div class="price-row">
-                <span class="unit-price">&dollar;{{ section.settings.unit_price }}</span>
-                <button class="add-to-cart-btn">
-                    <img src="{{ 'add-to-cart-icon.svg' | asset_url }}" alt="Cart Icon" width="21" height="21"/>
-                </button>
-            </div>
-        </div>
-    </div>
+    {% render 'featured-product-card',
+        product_image: section.settings.product_image,
+        series_title: section.settings.series_title,
+        card_paragraph: section.settings.card_paragraph,
+        unit_price: section.settings.unit_price,
+        badge_background_color: section.settings.badge_background_color,
+        badge_text_color: section.settings.badge_text_color,
+        badge_text: section.settings.badge_text
+    %}
+    {% render 'featured-product-card',
+        product_image: section.settings.product_image_2,
+        series_title: section.settings.series_title_2,
+        card_paragraph: section.settings.card_paragraph_2,
+        unit_price: section.settings.unit_price_2,
+        badge_background_color: section.settings.badge_background_color_2,
+        badge_text_color: section.settings.badge_text_color_2,
+        badge_text: section.settings.badge_text_2
+    %}
 </div>
 
 
@@ -142,6 +71,11 @@
     "tag": "section",
     "class": "featured-units",
     "settings": [
+        {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Product Image",
+        },
         {
             "type": "text",
             "id": "title",
@@ -256,6 +190,84 @@
             "id": "badge_text",
             "label": "Badge Text",
             "default": "Best Seller"
+        },
+
+        {
+            "type": "image_picker",
+            "id": "product_image_2",
+            "label": "Product Image 2",
+        },
+        {
+            "type": "text",
+            "id": "series_title_2",
+            "label": "Series Title 2",
+            "default": "VOLT-S20k Standby"
+        },
+        {
+            "type": "textarea",
+            "id": "card_paragraph_2",
+            "label": "Card Paragraph 2",
+            "default": "20kW whole-house backup power with smart-switch technology."
+        },
+        {
+            "type": "text",
+            "id": "unit_price_2",
+            "label": "Unit Price",
+            "default": "4,850.00"
+        },
+        {
+            "type": "select",
+            "id": "badge_background_color_2",
+            "label": "Badge Background Color",
+            "default": "--tertiary-color",
+            "options": [
+                {
+                    "value": "--primary-color",
+                    "label": "Primary Color"
+                },
+                {
+                    "value": "--secondary-color",
+                    "label": "Secondary Color"
+                },
+                {
+                    "value": "--tertiary-color",
+                    "label": "Tertiary Color"
+                },
+                {
+                    "value": "--neutral-color",
+                    "label": "Neutral Color"
+                },
+            ],
+        },
+        {
+            "type": "select",
+            "id": "badge_text_color_2",
+            "label": "Badge Text Color",
+            "default": "--neutral-color",
+            "options": [
+                {
+                    "value": "--primary-color",
+                    "label": "Primary Color"
+                },
+                {
+                    "value": "--secondary-color",
+                    "label": "Secondary Color"
+                },
+                {
+                    "value": "--tertiary-color",
+                    "label": "Tertiary Color"
+                },
+                {
+                    "value": "--neutral-color",
+                    "label": "Neutral Color"
+                },
+            ],
+        },
+        {
+            "type": "text",
+            "id": "badge_text_2",
+            "label": "Badge Text",
+            "default": "Eco-Ready"
         },
     ]
 }
