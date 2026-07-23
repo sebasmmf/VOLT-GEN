@@ -1,46 +1,53 @@
-{% if section.blocks.length > 0 %}
-    {{ 'cajita.css' | asset_url | stylesheet_tag }}
-    
-    {% for cajita in section.blocks %}
-        {% render "cajita", bg: cajita.settings.background, title: cajita.settings.title, color: section.settings.color %}
-    {% endfor %}
+{% if section.blocks.size > 0 %}
+  {{ 'cajita.css' | asset_url | stylesheet_tag }}
 
+  <div class="cajitas-wrapper">
+    {% for cajita in section.blocks %}
+      <div {{ cajita.shopify_attributes }}>
+        {% render 'cajita', 
+          bg: cajita.settings.background, 
+          title: cajita.settings.title, 
+          color: cajita.settings.color 
+        %}
+      </div>
+    {% endfor %}
+  </div>
 {% endif %}
 
 {% schema %}
 {
-    "name": "Cajitas",
-    "settings": [],
-    "presets": [
+  "name": "Cajitas",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Cajitas"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "cajita",
+      "name": "Cajita",
+      "settings": [
         {
-            "name": "Cajitas"
-        }
-    ],
-    "blocks": [
+          "type": "color_background",
+          "id": "background",
+          "label": "Background",
+          "default": "linear-gradient(#ffffff, #000000)"
+        },
         {
-            "type": "cajita",
-            "name": "Cajita",
-            "settings": [
-                {
-                    "type": "color_background",
-                    "id": "background",
-                    "label": "Background",
-                    "default": "linear-gradient(#ffffff, #000000)"
-                },
-                {
-                    "type": "color_text",
-                    "id": "color",
-                    "label": "Text color",
-                    "default": "#ffffff"
-                },
-                {
-                    "type": "text",
-                    "id": "title",
-                    "label": "Title",
-                    "default": "Un titulo"
-                }
-            ]
+          "type": "color",
+          "id": "color",
+          "label": "Text color",
+          "default": "#ffffff"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Un titulo"
         }
-    ]
+      ]
+    }
+  ]
 }
 {% endschema %}
