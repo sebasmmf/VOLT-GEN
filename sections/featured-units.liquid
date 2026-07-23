@@ -45,9 +45,17 @@
 {% comment %}
 Usar un setting de tipo lista de productos, mostrar usado una etiqueta for y renderizar el snippet. https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#product_list
 Usar bloques cuando sean requeridos: https://shopify.dev/docs/storefronts/themes/architecture/blocks/section-blocks
+Usar objeto producto: https://shopify.dev/docs/api/liquid/objects/product
 {% endcomment %}
 <div class="featured-units-collection">
     {% comment %} Card de producto destacado {% endcomment %}
+    
+    {% for prod in section.settings.product_list %}
+        {% render 'featured-product-card',
+            prod: prod
+        %}
+    {% endfor %}
+
     {% render 'featured-product-card',
         product_image: section.settings.product_image,
         series_title: section.settings.series_title,
@@ -75,6 +83,12 @@ Usar bloques cuando sean requeridos: https://shopify.dev/docs/storefronts/themes
     "tag": "section",
     "class": "featured-units",
     "settings": [
+        {
+            "type": "product_list",
+            "id": "product_list",
+            "label": "Products",
+            "limit": 12
+        },
         {
             "type": "image_picker",
             "id": "product_image",
