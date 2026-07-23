@@ -40,12 +40,48 @@
     },
     "featured-units": {
       "type": "featured-units",
+      "settings": {
+        "title": "Featured Units",
+        "title_color": "--secondary-color",
+        "btn_text": "View All",
+        "btn_link": "shopify://collections/all",
+        "series_title": "VOLT-P8000 Pro Series",
+        "card_paragraph": "8000W output with CO-Shield technology and easy electric start.",
+        "unit_price": "1,299.00",
+        "badge_background_color": "--primary-color",
+        "badge_text_color": "--neutral-color",
+        "badge_text": "Best Seller",
+        "series_title_2": "VOLT-S20k Standby",
+        "card_paragraph_2": "20kW whole-house backup power with smart-switch technology.",
+        "unit_price_2": "4,850.00",
+        "badge_background_color_2": "--tertiary-color",
+        "badge_text_color_2": "--neutral-color",
+        "badge_text_2": "Eco-Ready"
+      }
+    },
+    "cajitas_ryqnqh": {
+      "type": "cajitas",
+      "blocks": {
+        "cajita_ndnV7E": {
+          "type": "cajita",
+          "settings": {
+            "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(0, 0, 0, 1) 100%)",
+            "color": "{{ settings.color_palette.foreground }}",
+            "title": "MOSTRANDO CAJITA"
+          }
+        }
+      },
+      "block_order": [
+        "cajita_ndnV7E"
+      ],
+      "name": "Cajitas",
       "settings": {}
     }
   },
   "order": [
     "hero-banner",
     "categories-section",
-    "featured-units"
+    "featured-units",
+    "cajitas_ryqnqh"
   ]
 }
