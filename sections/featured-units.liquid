@@ -42,6 +42,10 @@
 </div>
 
 {% comment %} Coleccion de productos destacados {% endcomment %}
+{% comment %}
+Usar un setting de tipo lista de productos, mostrar usado una etiqueta for y renderizar el snippet. https://shopify.dev/docs/storefronts/themes/architecture/settings/input-settings#product_list
+Usar bloques cuando sean requeridos: https://shopify.dev/docs/storefronts/themes/architecture/blocks/section-blocks
+{% endcomment %}
 <div class="featured-units-collection">
     {% comment %} Card de producto destacado {% endcomment %}
     {% render 'featured-product-card',
