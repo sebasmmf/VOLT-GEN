@@ -1,3 +1,7 @@
+{% liquid
+    assign button_bg = button_bg | default: "--primary-color";
+%}
+
 <style>
     .btn {
         width: 100%;
@@ -8,6 +12,10 @@
         text-align: center;
     }
 </style>
+
+{% comment %}
+    Validar el valor de las propiedades pasadas al snippet usando if
+{% endcomment %}
 
 <a href="{{ button_url }}" class="btn" style="background-color: var({{ button_bg }}); color: var({{ button_text_color }});">
     {{ button_text | upcase }}

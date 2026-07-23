@@ -1,0 +1,41 @@
+{% if section.blocks.length > 0 %}
+    {{ 'cajita.css' | asset_url | stylesheet_tag }}
+    
+    {% for cajita in section.blocks %}
+        {% render "cajita", bg: cajita.settings.background, title: cajita.settings.title, color: section.settings.color %}
+    {% endfor %}
+
+{% endif %}
+
+{% schema %}
+{
+    "name": "Cajitas",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "cajita",
+            "name": "Cajita",
+            "settings": [
+                {
+                    "type": "color_background",
+                    "id": "background",
+                    "label": "Background",
+                    "default": "linear-gradient(#ffffff, #000000)"
+                },
+                {
+                    "type": "color_text",
+                    "id": "color",
+                    "label": "Text color",
+                    "default": "#ffffff"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title",
+                    "default": "Un titulo"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

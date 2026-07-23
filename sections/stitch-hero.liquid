@@ -27,7 +27,12 @@
     }
 </style>
 
+{% comment %}
+    Validar el valor de las propiedades agregadas desde el customizer usando la etiqueta if
+{% endcomment %}
+
 <h1>{{ section.settings.title }}</h1>
+
 <p>{{ section.settings.paragraph }}</p>
 <div class="hero-buttons">
     {% render 'stitch-button',
@@ -122,7 +127,7 @@
                         "value": "--neutral-color",
                         "label": "Neutral Color"
                     },
-                ],
+                ]
             },
             
             {
