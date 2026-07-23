@@ -1,9 +1,3 @@
-{% liquid
-    assign bg = bg | default: 'linear-gradient(#000000, #218e52)'
-    assign title = title | default: 'Un titulo'
-    assign color = color | default: '#ffffff'
-%}
-
-<article class="cajita" style="--cajita-bg: {{ bg }}; --cajita-text: {{ color }};">
-    <h3>{{ title }}</h3>
+<article class="cajita" style="--cajita-bg: {{ bg | default: 'linear-gradient(#000000, #218e52)' }}; --cajita-text: {{ color | default: '#ffffff' }};">
+  <h3>{{ title | default: 'Un titulo' }}</h3>
 </article>
