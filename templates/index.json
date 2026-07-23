@@ -62,17 +62,17 @@
     "cajitas_ryqnqh": {
       "type": "cajitas",
       "blocks": {
-        "cajita_ndnV7E": {
+        "cajita_98rFU8": {
           "type": "cajita",
           "settings": {
             "background": "linear-gradient(180deg, rgba(255, 255, 255, 1), rgba(0, 0, 0, 1) 100%)",
             "color": "{{ settings.color_palette.foreground }}",
-            "title": "MOSTRANDO CAJITA"
+            "title": "Un titulo"
           }
         }
       },
       "block_order": [
-        "cajita_ndnV7E"
+        "cajita_98rFU8"
       ],
       "name": "Cajitas",
       "settings": {}
