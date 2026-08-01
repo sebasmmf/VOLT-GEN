@@ -1,20 +1,27 @@
 {% liquid
-  unless button_bg != blank
-    assign button_bg = 'var(--primary-color)'
-  endunless
-
-  unless button_text_color != blank
-    assign button_text_color = '#ffffff'
-  endunless
-
-  assign button_text = button_text | default: 'Haz clic aquí'
-  assign button_url = button_url | default: '#'
+  assign bg_color = button_bg | default: 'var(--primary-color)'
+  assign txt_color = button_text_color | default: 'var(--neutral-color)'
+  assign text = button_text | default: 'Haz clic aquí'
+  assign url = button_url | default: '#'
 %}
 
+<style>
+  .btn {
+    color: var(--btn-color);
+    background-color: var(--btn-bg);
+    padding: 16px 20px;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+  }
+</style>
+
 <a 
-  href="{{ button_url }}" 
+  href="{{ url }}" 
   class="btn" 
-  style="--btn-bg: {{ button_bg }}; --btn-color: {{ button_text_color }};"
+  style="--btn-bg: var({{ bg_color }}); --btn-color: var({{ txt_color }});"
 >
-  {{ button_text | upcase }}
+  {{ text | upcase }}
 </a>
