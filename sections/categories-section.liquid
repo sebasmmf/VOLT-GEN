@@ -18,23 +18,11 @@
 {% render 'heading-title', title: "Browse Categories" %}
 
 <div class="card-wrapper">
-    {% render 'category-card',
-        title: section.settings.category-title,
-        paragraph: section.settings.category-paragraph,
-        icon: section.settings.category-icon | image_url: width: 16, height: 20
-    %}
+    {% render 'category-card', title: section.settings.category-title, paragraph: section.settings.category-paragraph, icon: section.settings.category-icon, image_url: width, height: 20 %}
 
-    {% render 'category-card',
-        title: section.settings.category-title-2,
-        paragraph: section.settings.category-paragraph-2,
-        icon: section.settings.category-icon-2 | image_url: width: 16, height: 20
-    %}
+    {% render 'category-card', title: section.settings.category-title-2, paragraph: section.settings.category-paragraph-2, icon: section.settings.category-icon-2, image_url: width, height: 20 %}
 
-    {% render 'category-card',
-        title: section.settings.category-title-3,
-        paragraph: section.settings.category-paragraph-3,
-        icon: section.settings.category-icon-3 | image_url: width: 16, height: 20
-    %}
+    {% render 'category-card', title: section.settings.category-title-3, paragraph: section.settings.category-paragraph-3, icon: section.settings.category-icon-3, image_url: width, height: 20 %}
 
 
 </div>
@@ -102,4 +90,40 @@
         ]
     }
 
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'category-card',
+            title: section.settings.category-title,
+            paragraph: section.settings.category-paragraph,
+            icon: section.settings.category-icon | image_url: width: 16, height: 20
+        %}
+  to: "{% render 'category-card', title: section.settings.category-title, paragraph:
+    section.settings.category-paragraph, icon: section.settings.category-icon, image_url:
+    width, height: 20 %}"
+  position: 357..541
+- from: |-
+    {% render 'category-card',
+            title: section.settings.category-title-2,
+            paragraph: section.settings.category-paragraph-2,
+            icon: section.settings.category-icon-2 | image_url: width: 16, height: 20
+        %}
+  to: "{% render 'category-card', title: section.settings.category-title-2, paragraph:
+    section.settings.category-paragraph-2, icon: section.settings.category-icon-2,
+    image_url: width, height: 20 %}"
+  position: 547..737
+- from: |-
+    {% render 'category-card',
+            title: section.settings.category-title-3,
+            paragraph: section.settings.category-paragraph-3,
+            icon: section.settings.category-icon-3 | image_url: width: 16, height: 20
+        %}
+  to: "{% render 'category-card', title: section.settings.category-title-3, paragraph:
+    section.settings.category-paragraph-3, icon: section.settings.category-icon-3,
+    image_url: width, height: 20 %}"
+  position: 743..933
+{%- endcomment -%}
