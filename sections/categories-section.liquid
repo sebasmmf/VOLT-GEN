@@ -1,7 +1,7 @@
 <style>
 
     .categories-section {
-        height: 400px;
+        height: max-content;
         padding: 32px 16px;
         background-color: #F3F3F3;
     }
@@ -15,29 +15,24 @@
 
 </style>
 
-{% render 'heading-title', title: "Browse Categories" %}
+{% unless section.settings.title == blank %}
+    {% render 'heading-title', title: section.settings.title %}
+{% endunless %}
 
-<div class="card-wrapper">
-    {% render "category-card",
-        title: section.settings.category-title,
-        paragraph: section.settings.category-paragraph,
-        icon: section.settings.category-icon
-    %}
+{%  if section.blocks.size > 0 %}
+    <div class="card-wrapper">
+        {% for block in section.blocks %}
+            {% render "category-card",
+                title: block.settings.category_title,
+                paragraph: block.settings.category_paragraph,
+                icon: block.settings.category_icon
+            %}
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No categories available to display at this time.</p>
+{% endif %}
 
-    {% render "category-card",
-        title: section.settings.category-title-2,
-        paragraph: section.settings.category-paragraph-2,
-        icon: section.settings.category-icon-2
-    %}
-
-    {% render "category-card",
-        title: section.settings.category-title-3,
-        paragraph: section.settings.category-paragraph-3,
-        icon: section.settings.category-icon-3
-    %}
-
-
-</div>
 
 
 {% schema %}
@@ -47,59 +42,48 @@
         "class": "categories-section",
         "settings": [
             {
-                "type": "image_picker",
-                "id": "category-icon",
-                "label": "Category Icon",
-            },
-            {
                 "type": "text",
-                "id": "category-title",
-                "label": "Category Title",
-                "default": "Portable Series"
+                "id": "title",
+                "label": "Title",
+                "default": "Browse Categories"
             },
+        ],
+        "blocks": [
             {
-                "type": "text",
-                "id": "category-paragraph",
-                "label": "Category Paragraph",
-                "default": "Rugged power for remote jobsites."
-            },
-
+                "type": "category_card",
+                "name": "Category Card",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "category_title",
+                        "label": "Title",
+                        "default": "Category title"
+                    },
+                    {
+                        "type": "textarea",
+                        "id": "category_paragraph",
+                        "label": "Description",
+                        "default": "Short description of the category."
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "category_icon",
+                        "label": "Icon or Image"
+                    }
+                ]
+            }
+        ],
+        "presets": [
             {
-                "type": "image_picker",
-                "id": "category-icon-2",
-                "label": "Category Icon",
-            },
-            {
-                "type": "text",
-                "id": "category-title-2",
-                "label": "Category Title",
-                "default": "Standby Home"
-            },
-            {
-                "type": "text",
-                "id": "category-paragraph-2",
-                "label": "Category Paragraph",
-                "default": "Seamless backup for your family."
-            },
-
-            {
-                "type": "image_picker",
-                "id": "category-icon-3",
-                "label": "Category Icon",
-            },
-            {
-                "type": "text",
-                "id": "category-title-3",
-                "label": "Industrial Grade",
-                "default": "High-capacity mission-critical systems."
-            },
-            {
-                "type": "text",
-                "id": "category-paragraph-3",
-                "label": "Category Paragraph",
-                "default": "Rugged power for remote jobsites."
-            },
+                "name": "Category Cards",
+                "blocks": [
+                    { "type": "category_card" },
+                    { "type": "category_card" },
+                    { "type": "category_card" }
+                ]
+            }
         ]
+        
     }
 
 {% endschema %}
