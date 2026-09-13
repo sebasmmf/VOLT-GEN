@@ -9,7 +9,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-bottom: 20px;
     }
 
     .btn-link {
@@ -30,16 +29,19 @@
 
 
 {% comment %} Encabezado de la sección de productos destacados {% endcomment %}
-<div class="featured-units-header">
-    {% render 'heading-title', 
-        title: section.settings.title,
-        title_color: section.settings.title_color 
-    %}
-    <a href="{{ section.settings.btn_link }}" class="btn-link">
-        {{ section.settings.btn_text }}
-        <img src="{{ 'arrow-right-icon.svg' | asset_url }}" alt="Arrow Right" width="12" height="12"/>
-    </a>
-</div>
+{% unless section.settings.title == blank %}
+    <div class="featured-units-header">
+        {% render 'heading-title', 
+            title: section.settings.title,
+            title_color: section.settings.title_color 
+        %}
+        <a href="{{ section.settings.btn_link }}" class="btn-link">
+            {{ section.settings.btn_text }}
+            <img src="{{ 'arrow-right-icon.svg' | asset_url }}" alt="Arrow Right" width="12" height="12"/>
+        </a>
+    </div>
+{% endunless %}
+
 
 {% comment %} Coleccion de productos destacados {% endcomment %}
 {% comment %}
@@ -47,19 +49,21 @@ Usar un setting de tipo lista de productos, mostrar usado una etiqueta for y ren
 Usar bloques cuando sean requeridos: https://shopify.dev/docs/storefronts/themes/architecture/blocks/section-blocks
 Usar objeto producto: https://shopify.dev/docs/api/liquid/objects/product
 {% endcomment %}
-<div class="featured-units-collection">
+
     {% comment %} Card de producto destacado {% endcomment %}
-    {%- if section.settings.product_list != blank -%}
+{%- if section.settings.product_list != blank -%}
+    <div class="featured-units-collection">
         {% for product in section.settings.product_list %}
             {% render 'featured-product-card',
                 product: product
             %}
         {% endfor %}
-    {%- else -%}
-        <p>No se han seleccionado productos aún.</p>
-    {%- endif -%}
+    </div>
+{%- else -%}
+    <p>No products have been selected yet.</p>
+{%- endif -%}
 
-</div>
+
 
 
 {% schema %}
