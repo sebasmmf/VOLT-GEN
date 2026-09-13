@@ -35,6 +35,16 @@
         gap: 8px;
     }
 
+    .card-details .card_description {
+        color: var(--tertiary-color)
+
+    }
+
+    .card-details .card_description div span {
+        font-size: 12px;
+    }
+
+
     .price-row {
         display: flex;
         justify-content: space-between;
@@ -70,30 +80,42 @@
         font-size: 10px;
         font-weight: bold;
     }
+
+    .badge--eco-ready {
+        background-color: var(--tertiary-color);
+        color: var(--neutral-color) !important;
+    }
 </style>
 
-<div class="card-wrapper-units">
-    {% comment %} <div class="badge" style="background-color: var({{ badge_background_color }}); color: var({{ badge_text_color }});">
-        <span>{{ badge_text | upcase }}</span>
+{% if product.featured_image != blank %}
+    <div class="card-wrapper-units">
+    {% unless product.tags == blank %}
+        {%- for tag in product.tags -%}
+            {%- assign tag_handle = tag | handleize -%}
+            {%- if tag_handle == 'eco-ready' -%}
+                <span class="badge badge--{{ tag_handle }}">{{ tag | upcase }}</span>
+            {%- else -%}
+                <span class="badge">{{ tag | upcase }}</span>
+            {%- endif -%}
 
-    </div> {% endcomment %}
+        {%- endfor -%}
+    {% endunless %}
 
-    <div class="card-image-container">
-        {% if product_image != blank %}
-            {{ product_image | image_url: width: 600 | image_tag }}
-        {% endif %}
-    </div>
-
-    <div class="card-info">
-        <div class="card-details">
-            <h3>{{ prod.title }}</h3>
-            <p>{{ card_paragraph }}</p>
+        <div class="card-image-container">
+                {{ product.featured_image | image_url: width: 600 | image_tag }}
         </div>
-        <div class="price-row">
-            <span class="unit-price">&dollar;{{ unit_price }}</span>
-            <button class="add-to-cart-btn">
-                <img src="{{ 'add-to-cart-icon.svg' | asset_url }}" alt="Cart Icon" width="21" height="21"/>
-            </button>
+
+        <div class="card-info">
+            <div class="card-details">
+                <h3>{{ product.title }}</h3>                
+                <div class="card_description">{{ product.description }}</div>
+            </div>
+            <div class="price-row">
+                <span class="unit-price">{{ product.price | money_with_currency }}</span>
+                <button class="add-to-cart-btn">
+                    <img src="{{ 'add-to-cart-icon.svg' | asset_url }}" alt="Cart Icon" width="21" height="21"/>
+                </button>
+            </div>
         </div>
     </div>
-</div>
+{% endif %}
