@@ -41,6 +41,7 @@
     "featured-units": {
       "type": "featured-units",
       "settings": {
+        "product_list": [],
         "title": "Featured Units",
         "title_color": "--secondary-color",
         "btn_text": "View All",
@@ -76,9 +77,15 @@
       ],
       "name": "Cajitas",
       "settings": {}
+    },
+    "traducciones_qd4DQp": {
+      "type": "traducciones",
+      "name": "Traducciones",
+      "settings": {}
     }
   },
   "order": [
+    "traducciones_qd4DQp",
     "hero-banner",
     "categories-section",
     "featured-units",
