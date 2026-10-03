@@ -8,6 +8,11 @@
  * ------------------------------------------------------------
  */
 {
+  "sebastian": {
+    "saludo": {
+      "hola": "Hola mundo"
+    }
+  },
   "accessibility": {
     "account": "Account",
     "active_filters": "Active filters:",
