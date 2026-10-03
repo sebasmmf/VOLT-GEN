@@ -1,4 +1,9 @@
 {
+  "sebastian": {
+    "saludo": {
+      "hola": "Hola mundo"
+    }
+  },
   "blocks": {
     "load_video": "Cargar video: {{ description }}",
     "sold_out": "Agotado",

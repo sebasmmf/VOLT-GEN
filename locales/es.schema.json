@@ -1,4 +1,9 @@
 {
+  "sections": {
+    "traducciones": {
+      "title": "titulo"
+    }
+  },
   "names": {
     "404": "404",
     "borders": "Bordes",

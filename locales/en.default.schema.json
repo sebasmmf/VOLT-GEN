@@ -8,6 +8,11 @@
  * ------------------------------------------------------------
  */
 {
+  "sections": {
+    "traducciones": {
+      "title": "title"
+    }
+  },
   "categories": {
     "banners": "Banners",
     // Category for fundamental content blocks (text, images, buttons)
